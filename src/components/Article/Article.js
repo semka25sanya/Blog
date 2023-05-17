@@ -1,7 +1,6 @@
-/* eslint-disable no-unused-vars */
-import { useParams, Link, useNavigate } from 'react-router-dom'
-import { useSelector, useDispatch } from 'react-redux'
-import { Button, Descriptions, message, Popconfirm } from 'antd'
+import { Link, useNavigate } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { message, Popconfirm } from 'antd'
 
 import ReactMarkdown from 'react-markdown'
 
@@ -9,7 +8,7 @@ import { useEffect, useLayoutEffect, useState } from 'react'
 
 import classes from './Article.module.scss'
 import convertDate from '../../utilits/convertDate'
-import { oneArticleLoad, deleteArticle, postLike, deleteLike, articlesLoad } from '../../redux/actions'
+import { oneArticleLoad, deleteArticle, postLike, deleteLike } from '../../redux/actions'
 import like from '../../images/like.svg'
 import liked from '../../images/liked.svg'
 
@@ -40,8 +39,6 @@ function Article({
 
         navigate('/')
     }
-
-    const li = useSelector((state) => state.articlesReducer)
 
     const cancel = () => message.error('Click on No')
 
@@ -97,24 +94,28 @@ function Article({
         ) : (
             <p className={classes.articleContent}>{description}</p>
         )
-    // console.log(1, favoritesCount)
-    // console.log(favorited)
-    const [isLiked, setLiked] = useState(favorited)
-    const [count, setCount] = useState(favoritesCount)
-    // console.log(2, count)
 
-    // useEffect(() => {
-    //     console.log(favoritesCount)
-    // }, [favoritesCount])
+    const [isLiked, setLiked] = useState(favorited)
+
+    const [isCurrentLiked, setCurrentLiked] = useState(0)
+
     const slugForLikes = slug === undefined ? Slug : slug
 
+    useEffect(() => {
+        setLiked(favorited)
+    }, [slugForLikes])
+
     const onClickLike = () => {
-        setLiked((prevLiked) => !prevLiked)
-        setCount((prevCount) => (isLiked ? prevCount - 1 : prevCount + 1))
+        if (!isLiked) {
+            setCurrentLiked(1)
+        } else {
+            setCurrentLiked(-1)
+        }
         const action = isLiked ? deleteLike(slugForLikes) : postLike(slugForLikes)
         dispatch(action)
+        setLiked((prevLiked) => !prevLiked)
     }
-    // console.log(isLiked)
+
     const imgForLike = isLiked ? (
         <img className={classes.svgLike} src={liked} alt="" />
     ) : (
@@ -137,7 +138,7 @@ function Article({
                                 {imgForLike}
                             </button>
 
-                            <div className={classes.likesCount}>{count}</div>
+                            <div className={classes.likesCount}>{favoritesCount + +isCurrentLiked}</div>
                         </div>
                     </div>
                 </div>
