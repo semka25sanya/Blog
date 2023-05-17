@@ -1,0 +1,142 @@
+.article {
+    width: 941px;
+    // height: 140px;
+    // height: auto;
+    background: #ffffff;
+    border-radius: 5px;
+    margin-top: 26px;
+    padding: 15px 19px;
+    display: flex;
+    justify-content: space-between;
+
+    &TitleAndLikes {
+        display: flex;
+        align-items: center;
+        margin-bottom: 5px;
+    }
+    &Left {
+        font-weight: 400;
+        font-size: 12px;
+        width: 682px;
+    }
+
+    &Top {
+        display: flex;
+        align-items: center;
+    }
+
+    &Title {
+        color: #1890ff;
+        font-style: normal;
+        font-weight: 400;
+        font-size: 20px;
+        margin-bottom: 4px;
+        margin-right: 13px;
+        text-decoration: none;
+    }
+    &Tags {
+        display: flex;
+        margin-bottom: 4px;
+    }
+    &Tag {
+        font-weight: 400;
+        font-size: 12px;
+        padding: 2px 6px;
+        border: 1px solid rgba(0, 0, 0, 0.5);
+        border-radius: 2px;
+        margin-right: 8px;
+        max-width: 682px;
+        overflow: hidden;
+    }
+
+    &Content {
+        font-style: normal;
+        font-weight: 400;
+        font-size: 12px;
+        line-height: 22px;
+        max-height: 65px;
+        overflow: hidden;
+
+        &Gray {
+            color: rgba(0, 0, 0, 0.5);
+        }
+    }
+
+    &Right {
+        display: flex;
+        flex-direction: column;
+
+        &Info {
+            display: flex;
+            justify-content: space-between;
+            margin-bottom: 30px;
+        }
+    }
+
+    &Name {
+        font-weight: 400;
+        font-size: 18px;
+    }
+
+    &Date {
+        font-weight: 400;
+        font-size: 12px;
+    }
+    &Body {
+        margin: 25px 0;
+    }
+    &Img {
+        max-width: 46px;
+        max-height: 46px;
+        margin-left: 12px;
+    }
+}
+
+.editButtons {
+    align-items: flex-end;
+}
+
+.editButtonEdit {
+    height: 35px;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid #52c41a;
+    color: #52c41a;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 6px 17px;
+    border-radius: 4px;
+    margin-left: 10px;
+    text-decoration: none;
+}
+
+.editButtonDelete {
+    height: 35px;
+    background: none;
+    cursor: pointer;
+    font-size: 14px;
+    border: 1px solid #f5222d;
+    color: #f5222d;
+    font-weight: 400;
+    font-size: 16px;
+    padding: 3px 17px;
+    border-radius: 4px;
+    text-decoration: none;
+
+    // width: 35px;
+}
+
+.likes {
+    display: flex;
+
+    &Count {
+        margin-left: 5px;
+    }
+}
+
+.svgLikeButton {
+    background: none;
+    border: none;
+    cursor: pointer;
+}

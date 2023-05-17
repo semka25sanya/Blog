@@ -1,0 +1,107 @@
+.createArticle {
+    &Wrapper {
+        background: #ffffff;
+        width: 938px;
+        min-height: 60px;
+        margin-top: 32px;
+        margin-bottom: 160px;
+        border: 1px solid #d9d9d9;
+        box-shadow: 0px 22px 106px rgba(0, 0, 0, 0.07), 0px 9.19107px 44.2843px rgba(0, 0, 0, 0.0503198),
+            0px 4.91399px 23.6765px rgba(0, 0, 0, 0.0417275), 0px 2.75474px 13.2728px rgba(0, 0, 0, 0.035),
+            0px 1.46302px 7.04911px rgba(0, 0, 0, 0.0282725), 0px 0.608796px 2.93329px rgba(0, 0, 0, 0.0196802);
+        border-radius: 6px;
+        padding: 48px 32px;
+        display: flex;
+        flex-direction: column;
+    }
+    &Tag {
+        // width: 50%;
+        display: flex;
+    }
+
+    &Title {
+        align-self: center;
+        font-family: 'Roboto';
+        font-style: normal;
+        font-weight: 500;
+        font-size: 20px;
+        margin-bottom: 21px;
+    }
+
+    &Form {
+        &TagsWrapper {
+            display: flex;
+        }
+        &Section {
+            font-family: 'Roboto';
+            font-style: normal;
+            font-weight: 400;
+            font-size: 14px;
+            margin-bottom: 5px;
+        }
+
+        &Input {
+            width: 100%;
+            padding: 8px 12px;
+            margin-bottom: 21px;
+            border: 1px solid #d9d9d9;
+            border-radius: 4px;
+
+            &Tag {
+                width: 300px;
+            }
+
+            &Text {
+                height: 168px;
+                font-family: 'Roboto';
+                font-style: normal;
+                font-weight: 400;
+            }
+        }
+        &Button {
+            height: 35px;
+            background: none;
+
+            color: inherit;
+            cursor: pointer;
+            border: 1px solid #f5222d;
+            outline: inherit;
+            align-items: center;
+            text-align: center;
+            font-weight: 400;
+            font-size: 16px;
+            color: #f5222d;
+            font-weight: 400;
+            font-size: 16px;
+            padding: 6px 20px;
+            border-radius: 4px;
+            margin-left: 15px;
+
+            &Add {
+                color: #1890ff;
+                border: 1px solid #1890ff;
+                margin-left: 0;
+                margin-bottom: 20px;
+            }
+
+            &Send {
+                background: #1890ff;
+                border-radius: 4px;
+                width: 300px;
+                height: 40px;
+                color: #ffffff;
+                border: 1px solid #1890ff;
+                cursor: pointer;
+            }
+        }
+    }
+}
+
+.ErrorMessage {
+    color: red;
+    margin-top: -12px;
+    font-size: 10px;
+    margin-bottom: 10px;
+}
+
+

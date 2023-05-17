@@ -1,0 +1,43 @@
+.HeaderAccount {
+    display: flex;
+    align-items: center;
+
+    &Link {
+        color: inherit;
+        text-decoration: none;
+        cursor: pointer;
+        display: flex;
+        align-items: center;
+    }
+}
+
+.CreateArticle {
+    background: #fff;
+    font-weight: 400;
+    font-size: 14px;
+    border: 1px solid #52c41a;
+    border-radius: 5px;
+    width: 112.23px;
+    height: 31.1px;
+    align-items: center;
+    cursor: pointer;
+    color: #52c41a;
+    margin-right: 27px;
+    padding: 0 10px;
+}
+.Img {
+    margin-left: 13px;
+    width: 46px;
+    height: 46px;
+}
+
+.LogOut {
+    width: 112.23px;
+    height: 31.1px;
+    border: 1px solid rgba(0, 0, 0, 0.75);
+    border-radius: 5px;
+    padding: 6px 18px;
+    background-color: #fff;
+    margin-left: 27px;
+    cursor: pointer;
+}
