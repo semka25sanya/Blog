@@ -8,7 +8,6 @@ const initialState = {
 export const errorReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case CATCH_ERROR:
-            // console.log(action.payload)
             return {
                 ...state,
                 error: true,

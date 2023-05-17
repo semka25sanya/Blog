@@ -1,7 +1,7 @@
-// eslint-disable-next-line no-unused-vars
+
 
 import { LOAD_ARTICLES, LOAD_ONE_ARTICLE, CATCH_ERROR, SIGN_IN, LOG_OUT, POST_ARTICLE } from './types'
-// DELETE_ARTICLE
+
 export function articlesLoad(numberPage = 1) {
     return (dispatch) => {
         const token = localStorage.getItem('token')
@@ -30,7 +30,6 @@ export function oneArticleLoad(slugArt = '1-2-3-4-5-6-e3jlt0') {
 }
 
 export function registrationNewUser(dataOfNewUser) {
-    // localStorage.clear()
     return (dispatch) => {
         const { Username, EmailAddress, Password } = dataOfNewUser
 

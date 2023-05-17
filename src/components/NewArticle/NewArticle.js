@@ -5,7 +5,6 @@ import { useNavigate, useParams } from 'react-router-dom'
 
 import classes from './NewArticle.module.scss'
 import { postNewArticle, updateArticle } from '../../redux/actions'
-//
 
 function NewArticle({ title = '', description = '', body = '', tagList = [] }) {
     const {

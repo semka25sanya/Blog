@@ -1,6 +1,5 @@
 import { LOAD_ONE_ARTICLE } from './types'
 
-// DELETE_ARTICLE
 const initialState = {
     article: [],
     isOneArticle: false,
@@ -16,12 +15,6 @@ export const articleReducer = (state = initialState, action = {}) => {
                 article: action.payload,
                 isOneArticle: true,
             }
-        // case DELETE_ARTICLE:
-        //     return {
-        //         ...state,
-        //         article: action.payload,
-        //         isOneArticle: false,
-        //     }
 
         default:
             return state

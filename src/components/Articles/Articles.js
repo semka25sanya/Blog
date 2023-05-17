@@ -1,5 +1,5 @@
 import { useSelector, useDispatch } from 'react-redux'
-// import { Link } from 'react-router-dom'
+
 import { Pagination, Alert } from 'antd'
 import './Aricles.scss'
 
@@ -31,8 +31,6 @@ function Articles() {
     const idUnic = count()
 
     const arr = arrayArticles.map((el) => (
-        // <Link to={`/articles/${el.slug}`}>
-
         <Article
             body={el.body}
             key={idUnic()}
@@ -48,7 +46,6 @@ function Articles() {
         >
             {el}
         </Article>
-        // </Link>
     ))
 
     const articlesContent =
@@ -63,11 +60,10 @@ function Articles() {
         ) : (
             arr
         )
-    // console.log(arr)
+
     const dispatch = useDispatch()
 
     function changePage(e) {
-        // console.log(e)
         dispatch(articlesLoad(e))
     }
 
@@ -76,7 +72,6 @@ function Articles() {
         return articlesReducer.currentPage
     })
 
-    // console.log('!', page)
     useEffect(() => {
         dispatch(articlesLoad())
     }, [])
@@ -92,7 +87,7 @@ function Articles() {
                 showSizeChanger={false}
             />
         ) : null
-    // console.log(arrayArticles)
+
     return (
         <>
             {articlesContent}

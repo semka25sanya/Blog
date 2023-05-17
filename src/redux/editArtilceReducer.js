@@ -8,7 +8,6 @@ const initialState = {
 export const editArticleReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case POST_ARTICLE:
-            console.log(action.article)
             return {
                 ...state,
                 article: action.article,

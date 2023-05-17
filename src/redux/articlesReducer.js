@@ -8,9 +8,6 @@ const initialState = {
 
 // eslint-disable-next-line import/prefer-default-export
 export const articlesReducer = (state = initialState, action = {}) => {
-    // console.log(action.type)
-    // console.log(action.payload)
-    // console.log(state)
     switch (action.type) {
         case LOAD_ARTICLES:
             return {
