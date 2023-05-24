@@ -1,7 +1,7 @@
 import './Header.scss'
-import { useEffect } from 'react'
+
 import { useSelector } from 'react-redux'
-import { Link, useNavigate } from 'react-router-dom'
+import { Link } from 'react-router-dom'
 import HeaderAccount from '../HeaderAccount/HeaderAccount'
 
 function Header() {
@@ -9,14 +9,6 @@ function Header() {
         const { userReducer } = state
         return userReducer.isLogined
     })
-
-    const navigate = useNavigate()
-
-    useEffect(() => {
-        if (isLogined) {
-            navigate('/')
-        }
-    }, [isLogined])
 
     const headerAcc = isLogined ? (
         <HeaderAccount />
@@ -36,10 +28,7 @@ function Header() {
             <Link to="/articles" className="headerName">
                 Realworld Blog
             </Link>
-            <div>
-                {/* <HeaderAccount /> */}
-                {headerAcc}
-            </div>
+            <div>{headerAcc}</div>
         </header>
     )
 }

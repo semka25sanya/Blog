@@ -12,16 +12,16 @@ function Articles() {
         const { articlesReducer } = state
         return articlesReducer.articles
     })
-    console.log(arrayArticles)
+
     const countArticles = useSelector((state) => {
         const { articlesReducer } = state
         return articlesReducer.countArticles
     })
 
     const error = useSelector((state) => {
-        const { errorReducer } = state
+        const { articlesReducer } = state
 
-        return errorReducer.error
+        return articlesReducer.error
     })
 
     const count = () => {
@@ -77,7 +77,7 @@ function Articles() {
     }, [])
 
     const paginator =
-        countArticles !== 0 ? (
+        countArticles !== 0 && !error ? (
             <Pagination
                 className="paginator"
                 current={page}

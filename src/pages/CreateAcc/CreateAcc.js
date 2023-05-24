@@ -1,4 +1,5 @@
 import { Link, useNavigate } from 'react-router-dom'
+import { Alert } from 'antd'
 import { useEffect } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
@@ -13,6 +14,18 @@ function CreateAcc() {
         formState: { errors },
     } = useForm()
 
+    const error = useSelector((state) => state.userReducer.error)
+
+    const errMess =
+        error === true ? (
+            <Alert
+                style={{ marginTop: '5px', marginBottom: '10px' }}
+                description="Пользователь с такими данными уже существует! Измените, пожалуйста, данные"
+                type="error"
+                showIcon
+            />
+        ) : null
+
     const dispatch = useDispatch()
 
     const onSubmit = (data) => dispatch(registrationNewUser(data))
@@ -26,7 +39,7 @@ function CreateAcc() {
 
     useEffect(() => {
         if (isLogined) {
-            navigate('/articles')
+            navigate('/')
         }
     }, [isLogined])
 
@@ -36,6 +49,7 @@ function CreateAcc() {
         if (value !== password) {
             return 'Passwords do not match'
         }
+
     }
 
     function errorMess(val) {
@@ -47,6 +61,7 @@ function CreateAcc() {
     return (
         <div className={classes.Card}>
             <h3 className={classes.CardTitle}>Create new account</h3>
+            {errMess}
             <form onSubmit={handleSubmit(onSubmit)} className={classes.CardForm}>
                 <label className={classes.CardLabel}>
                     <p className={classes.CardSectionTitle}>Username</p>

@@ -1,4 +1,6 @@
-import { useEffect } from 'react'
+/* eslint-disable no-unused-vars */
+import { useEffect, useState } from 'react'
+import { Alert } from 'antd'
 import { useDispatch, useSelector } from 'react-redux'
 import { Link, useNavigate } from 'react-router-dom'
 import { useForm } from 'react-hook-form'
@@ -29,6 +31,19 @@ function SignIn() {
         const { userReducer } = state
         return userReducer.isLogined
     })
+
+    const error = useSelector((state) => state.userReducer.error)
+
+    const errMess =
+        error === true ? (
+            <Alert
+                style={{ marginTop: '100px' }}
+                message="Ошибка!"
+                description="Пользователь с такими данными не найден!"
+                type="error"
+                showIcon
+            />
+        ) : null
 
     const navigate = useNavigate()
 
@@ -80,6 +95,7 @@ function SignIn() {
                         Sign Up.
                     </Link>
                 </p>
+                {errMess}
             </form>
         </div>
     )

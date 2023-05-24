@@ -20,7 +20,7 @@ function NewArticle({ title = '', description = '', body = '', tagList = [] }) {
 
     const { slug } = useParams()
     const ArticleTitle = slug !== undefined ? 'Edit article' : 'Create new article'
-    console.log(slug)
+
     const dispatch = useDispatch()
     const navigate = useNavigate()
     const { fields, append, remove } = useFieldArray({

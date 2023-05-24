@@ -33,8 +33,6 @@ function OnePageArticle() {
     const favorited = useSelector((state) => state.articleReducer.article?.favorited)
 
     const Slug = slug
-    console.log(countLikes)
-    console.log(favorited)
 
     const { tagList, description, createdAt, body } = oneArticle
 

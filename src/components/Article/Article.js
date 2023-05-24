@@ -1,6 +1,6 @@
 import { Link, useNavigate } from 'react-router-dom'
-import { useDispatch } from 'react-redux'
-import { message, Popconfirm } from 'antd'
+import { useDispatch, useSelector } from 'react-redux'
+import { message, Popconfirm, Alert } from 'antd'
 
 import ReactMarkdown from 'react-markdown'
 
@@ -31,6 +31,12 @@ function Article({
         oneArticleLoad(slug)
     })
 
+    const error = useSelector((state) => {
+        const { articleReducer } = state
+
+        return articleReducer.error
+    })
+
     const navigate = useNavigate()
     const dispatch = useDispatch()
     const confirm = () => {
@@ -39,6 +45,9 @@ function Article({
 
         navigate('/')
     }
+
+    const isLogined = useSelector((state) => state.userReducer.isLogined)
+    const disable = !isLogined
 
     const cancel = () => message.error('Click on No')
 
@@ -122,43 +131,55 @@ function Article({
         <img className={classes.svgLike} src={like} alt="" />
     )
 
-    return (
-        <div className={classes.article}>
-            <div className={classes.articleLeft}>
-                <div className={classes.articleLeftTop}>
-                    <div className={classes.articleTitleAndLikes}>
-                        {titleArticle}
-                        <div className={classes.likes}>
-                            <button
-                                type="button"
-                                className={classes.svgLikeButton}
-                                onClick={onClickLike}
-                                aria-label="like"
-                            >
-                                {imgForLike}
-                            </button>
+    const articleContent =
+        error === true ? (
+            <Alert
+                style={{ marginTop: '50px' }}
+                message="Ошибка!"
+                description="Ошибка получения данных с сервера!"
+                type="warning"
+                showIcon
+            />
+        ) : (
+            <div className={classes.article}>
+                <div className={classes.articleLeft}>
+                    <div className={classes.articleLeftTop}>
+                        <div className={classes.articleTitleAndLikes}>
+                            {titleArticle}
+                            <div className={classes.likes}>
+                                <button
+                                    type="button"
+                                    className={classes.svgLikeButton}
+                                    onClick={onClickLike}
+                                    aria-label="like"
+                                    disabled={disable}
+                                >
+                                    {imgForLike}
+                                </button>
 
-                            <div className={classes.likesCount}>{favoritesCount + +isCurrentLiked}</div>
+                                <div className={classes.likesCount}>{favoritesCount + +isCurrentLiked}</div>
+                            </div>
                         </div>
                     </div>
-                </div>
-                <div className={classes.articleTags}>{tagsArr}</div>
-                {descriptionText}
+                    <div className={classes.articleTags}>{tagsArr}</div>
+                    {descriptionText}
 
-                <div className={classes.articleBody}>{textBody}</div>
-            </div>
-            <div className={classes.articleRight}>
-                <div className={classes.articleRightInfo}>
-                    <div className={classes.articleRightInfoTop}>
-                        <p className={classes.articleName}>{name}</p>
-                        <p className={classes.articleDate}>{convertDate(creationDate)}</p>
-                    </div>
-                    <img src={img} alt="user" className={classes.articleImg} />
+                    <div className={classes.articleBody}>{textBody}</div>
                 </div>
-                {buttons}
+                <div className={classes.articleRight}>
+                    <div className={classes.articleRightInfo}>
+                        <div className={classes.articleRightInfoTop}>
+                            <p className={classes.articleName}>{name}</p>
+                            <p className={classes.articleDate}>{convertDate(creationDate)}</p>
+                        </div>
+                        <img src={img} alt="user" className={classes.articleImg} />
+                    </div>
+                    {buttons}
+                </div>
             </div>
-        </div>
-    )
+        )
+
+    return articleContent
 }
 
 export default Article

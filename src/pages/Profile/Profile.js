@@ -1,4 +1,5 @@
 import { useDispatch, useSelector } from 'react-redux'
+import { Alert } from 'antd'
 import { useForm } from 'react-hook-form'
 import classes from '../CreateAcc/Card.module.scss'
 import { editUser } from '../../redux/actions'
@@ -20,6 +21,15 @@ function Profile() {
         },
     })
 
+    const err = useSelector((state) => state.userReducer.errorEdit)
+    const modalError = err ? (
+        <Alert
+            style={{ marginTop: '70px' }}
+            description="К сожалению, изменить данные не удалось! Попробуйте позже..."
+            type="warning"
+            showIcon
+        />
+    ) : null
     const dispatch = useDispatch()
 
     const onSubmit = (data) => {
@@ -113,6 +123,7 @@ function Profile() {
                 <button type="submit" className={classes.CardButton} onClick={handleSubmit(onSubmit)}>
                     Save
                 </button>
+                {modalError}
             </form>
         </div>
     )

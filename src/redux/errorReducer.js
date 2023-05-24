@@ -4,7 +4,6 @@ const initialState = {
     error: false,
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const errorReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case CATCH_ERROR:
@@ -17,3 +16,5 @@ export const errorReducer = (state = initialState, action = {}) => {
             return state
     }
 }
+
+export default errorReducer

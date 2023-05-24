@@ -1,12 +1,12 @@
-import { LOAD_ARTICLES } from './types'
+import { LOAD_ARTICLES, CATCH_ARTICLES_ERROR } from './types'
 
 const initialState = {
     articles: [],
     countArticles: 0,
     currentPage: 1,
+    error: false,
 }
 
-// eslint-disable-next-line import/prefer-default-export
 export const articlesReducer = (state = initialState, action = {}) => {
     switch (action.type) {
         case LOAD_ARTICLES:
@@ -16,8 +16,15 @@ export const articlesReducer = (state = initialState, action = {}) => {
                 countArticles: action.articlesCount,
                 currentPage: action.page,
             }
+        case CATCH_ARTICLES_ERROR:
+            return {
+                ...state,
+                error: true,
+            }
 
         default:
             return state
     }
 }
+
+export default articlesReducer
